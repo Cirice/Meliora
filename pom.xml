@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>com.miras-tech.search</groupId>
+    <artifactId>meliora</artifactId>
+    <version>1.0-alpha</version>
+
+
+
+    <dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-core -->
+    <dependency>
+        <groupId>org.deeplearning4j</groupId>
+        <artifactId>deeplearning4j-core</artifactId>
+        <version>0.8.0</version>
+    </dependency>
+        <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-nlp -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-nlp</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-ui -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-ui</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.deeplearning4j/dl4j-spark_2.11 -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>dl4j-spark_2.11</artifactId>
+            <version>0.8.0_spark_2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-ui-components -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-ui-components</artifactId>
+            <version>0.8.0</version>
+
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
+
+
+
+
+    </dependencies>
+
+
+
+</project>
