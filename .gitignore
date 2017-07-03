@@ -10,6 +10,10 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 
+# VC files
+.idea/vcs.xml
+
+
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
