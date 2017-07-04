@@ -39,18 +39,14 @@ public class TextReader {
             InputStream inputStream = new FileInputStream(configFile);
             Properties props = new Properties();
             props.load(inputStream);
-
             this.csvData = props.getProperty("input.data.file");
             this.cvsSplitBy = props.getProperty("column.delimiter");
-
             this.clumnSize = Integer.parseInt(props.getProperty("columns.size"));
 
             String columns = props.getProperty("selected.cloumns.indices");
             for(String elem:columns.split(",")){
                 this.columnList.add(Integer.parseInt(elem.trim()));
             }
-
-            System.out.println(this.columnList);
 
             reader.close();
         } catch (FileNotFoundException ex) {
@@ -70,7 +66,8 @@ public class TextReader {
             String[] record = line.split(this.cvsSplitBy);
             if (record.length == clumnSize)
             for (int i:this.columnList) {
-                System.out.println(record[i]);
+                //System.out.println(new TextCleaner().normalize(record[i]));
+                new TextCleaner().normalize(record[i]);
 
             }
         }
