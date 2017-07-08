@@ -32,7 +32,7 @@ RUN apt-get -y update && \
     python3-pip \
     language-pack-en \
     vim \
-    openblas-dev
+    libopenblas-dev
 
 
 
