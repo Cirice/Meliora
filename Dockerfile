@@ -31,7 +31,8 @@ RUN apt-get -y update && \
     apt-get -y install \
     python3-pip \
     language-pack-en \
-    vim
+    vim \
+    openblas-dev
 
 
 
