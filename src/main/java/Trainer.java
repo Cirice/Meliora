@@ -1,5 +1,7 @@
 import org.apache.log4j.Logger;
+import org.bytedeco.javacpp.presets.opencv_core;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
@@ -7,9 +9,9 @@ import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFac
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
 import org.deeplearning4j.ui.UiServer;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Collection;
+import java.util.Properties;
 
 /**
  * Created by shagrath on 7/5/17.
@@ -17,14 +19,64 @@ import java.util.Collection;
 
 public class Trainer {
 
-    final static Logger logger = Logger.getLogger(Trainer.class);
+    private final static Logger logger = Logger.getLogger(Trainer.class);
 
     // Split on white spaces in the line to get words
     private TokenizerFactory t = new DefaultTokenizerFactory();
+    private String inputCorpusPath;
+    private String modelSavePath;
+    private int minWordFrequency;
+    private int iterations;
+    private int layerSize;
+    private int windowSize;
+    private Double learningRate;
 
 
 
-    public SentenceIterator loadCorpus(String filePath) throws FileNotFoundException {
+
+
+    private Trainer(){
+
+        String configFilePath = "conf/word2vec-default.properties";
+        try {
+            logger.warn("Reading the input file:" + configFilePath);
+            File configFile = new File(configFilePath);
+            FileReader reader = new FileReader(configFile);
+            InputStream inputStream = new FileInputStream(configFile);
+            Properties props = new Properties();
+            props.load(inputStream);
+
+            this.inputCorpusPath = props.getProperty("input.corpus.path");
+            this.modelSavePath = props.getProperty("output.model.save.path");
+            this.minWordFrequency = Integer.parseInt(props.getProperty("min.word.frequency").trim());
+            this.iterations = Integer.parseInt(props.getProperty("number.of.iterations").trim());
+            this.layerSize = Integer.parseInt(props.getProperty("layer.size").trim());
+            this.windowSize = Integer.parseInt(props.getProperty("window.size").trim());
+            this.learningRate = Double.valueOf(props.getProperty("learning.rate").trim());
+
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            logger.error("File " + configFilePath + " not found!");
+        } catch (IOException ex) {
+            logger.error("Error in reading" + configFilePath + "!");
+        }
+
+    System.out.println(this.inputCorpusPath);
+
+    }
+
+    private void saveModel(String filePath, Word2Vec model){
+        WordVectorSerializer.writeWord2VecModel(model, filePath);
+
+
+    }
+
+    private Word2Vec loadModel(String filePath){
+        return WordVectorSerializer.readWord2VecModel(filePath);
+    }
+
+
+    private SentenceIterator loadCorpus(String filePath) throws FileNotFoundException {
 
         logger.info("Load & Vectorize Sentences....");
         return new BasicLineIterator(filePath);
@@ -34,27 +86,24 @@ public class Trainer {
 
         logger.info("Building model....");
 
-        SentenceIterator iter = loadCorpus("/media/shagrath/Hoji/sample-output.txt");
+        SentenceIterator iter = loadCorpus(this.inputCorpusPath);
 
-        Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(2)
-                .iterations(1)
-                .layerSize(100)
-                .seed(100)
-                .windowSize(5)
+        Word2Vec model = new Word2Vec.Builder()
+                .minWordFrequency(minWordFrequency)
+                .iterations(iterations)
+                .layerSize(layerSize)
+                .seed(42)
+                .windowSize(windowSize)
                 .iterate(iter)
                 .tokenizerFactory(t)
+                .learningRate(learningRate)
                 .build();
 
         logger.info("Fitting Word2Vec model....");
-        vec.fit();
-
-        WordVectorSerializer.writeWord2VecModel(vec, "pathToWriteto.txt");
-
-        logger.info("Closest Words:");
-        Collection<String> lst = vec.wordsNearest("اشتباه", 10);
-        System.out.println(vec.vocab().words());
-        System.out.println(lst);
+        model.fit();
+        logger.info("Training finished, saving the model :" + this.modelSavePath);
+        saveModel(this.modelSavePath, model);
+        logger.info("All Done!");
 
 
     }
