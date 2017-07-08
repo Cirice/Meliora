@@ -1,17 +1,14 @@
+import java.io.*;
+import java.util.Properties;
+
 import org.apache.log4j.Logger;
-import org.bytedeco.javacpp.presets.opencv_core;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
-import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
-import org.deeplearning4j.ui.UiServer;
 
-import java.io.*;
-import java.util.Collection;
-import java.util.Properties;
 
 /**
  * Created by shagrath on 7/5/17.
@@ -82,7 +79,7 @@ public class Trainer {
         return new BasicLineIterator(filePath);
     }
 
-    public void train() throws Exception {
+    private void train() throws Exception {
 
         logger.info("Building model....");
 

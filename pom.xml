@@ -18,6 +18,28 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>assemble-all</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -97,7 +119,6 @@
             <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native</artifactId>
             <version>0.8.0</version>
-            <classifier>linux-x86_64</classifier>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.nd4j/nd4j-native -->
@@ -105,19 +126,12 @@
             <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native-platform</artifactId>
             <version>0.8.0</version>
-            <classifier>linux-x86_64</classifier>
+
         </dependency>
 
 
-
-
-
-
-
-
-
-
     </dependencies>
+
 
 
 

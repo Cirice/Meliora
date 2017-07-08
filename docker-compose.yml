@@ -1,0 +1,10 @@
+version: '2'
+services:
+  word2vec_trainer:
+    build: ./
+    container_name: word2wec
+    volumes:
+      - ./conf:/home/badger/conf
+      - ./log:/home/badger/log
+      - .corpus:/home/badger/corpus
+
