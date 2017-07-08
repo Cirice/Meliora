@@ -29,9 +29,6 @@ public class Trainer {
     private Double learningRate;
 
 
-
-
-
     private Trainer(){
 
         String configFilePath = "conf/word2vec-default.properties";
