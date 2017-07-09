@@ -1,10 +1,10 @@
 version: '2'
 services:
   word2vec_trainer:
-    build: ./
+    image: registry.gitlab.com/hosseinabedi/meliora:development 
     container_name: word2wec
     volumes:
-      - ./conf:/home/badger/conf
-      - ./log:/home/badger/log
-      - .corpus:/home/badger/corpus
+      - ./conf:/home/word2vec/conf
+      - ./log:/home/word2vec/log
+      - ./corpus:/home/word2vec/corpus
 
