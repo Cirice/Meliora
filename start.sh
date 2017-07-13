@@ -2,5 +2,5 @@
 
 echo "Kicking off!"
 
-java -cp target/meliora-1.0-alpha-jar-with-dependencies.jar Trainer  -Xms20g  -Xmx85g
+java -Xms5g  -Xmx63g -cp target/meliora-1.0-alpha-jar-with-dependencies.jar Trainer 
 

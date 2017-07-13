@@ -1,0 +1,54 @@
+Kicking off!
+21:43:07.891 [main] WARN  Trainer - Reading the input file:conf/word2vec-default.properties
+corpus/cleaned-content-only-v-0.1.0.txt
+21:43:07.898 [main] INFO  Trainer - Building model....
+21:43:07.899 [main] INFO  Trainer - Load & Vectorize Sentences....
+21:43:07.975 [main] INFO  org.nd4j.linalg.factory.Nd4jBackend - Loaded [CpuBackend] backend
+21:43:08.117 [main] INFO  org.nd4j.nativeblas.NativeOpsHolder - Number of threads used for NativeOps: 7
+21:43:08.168 [main] DEBUG org.reflections.Reflections - going to scan these urls:
+jar:file:/home/high/meliora/target/meliora-1.0-alpha-jar-with-dependencies.jar!/
+21:43:08.786 [main] INFO  org.reflections.Reflections - Reflections took 615 ms to scan 1 urls, producing 29 keys and 189 values 
+21:43:08.961 [main] INFO  org.nd4j.nativeblas.Nd4jBlas - Number of threads used for BLAS: 7
+21:43:08.967 [main] INFO  o.n.l.a.o.e.DefaultOpExecutioner - Backend used: [CPU]; OS: [Linux]
+21:43:08.967 [main] INFO  o.n.l.a.o.e.DefaultOpExecutioner - Cores: [49]; Memory: [56.0GB];
+21:43:08.967 [main] INFO  o.n.l.a.o.e.DefaultOpExecutioner - Blas vendor: [OPENBLAS]
+21:43:09.199 [main] INFO  Trainer - Fitting Word2Vec model....
+21:43:09.237 [main] INFO  o.d.m.s.SequenceVectors - Starting vocabulary building...
+21:43:09.238 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Target vocab size before building: [0]
+21:43:09.308 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Trying source iterator: [0]
+21:43:09.309 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Target vocab size before building: [0]
+21:43:14.815 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [100000]; Current vocabulary size: [300176]; Sequences/sec: 17930.79; Words/sec: 5367580.96;
+21:43:19.786 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [200000]; Current vocabulary size: [441513]; Sequences/sec: 20120.72; Words/sec: 6083640.44;
+21:43:24.334 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [300000]; Current vocabulary size: [552124]; Sequences/sec: 21982.85; Words/sec: 6655916.68;
+21:43:28.982 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [400000]; Current vocabulary size: [648232]; Sequences/sec: 21514.63; Words/sec: 6448713.21;
+21:43:33.689 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [500000]; Current vocabulary size: [726508]; Sequences/sec: 21244.95; Words/sec: 6508769.28;
+21:43:38.640 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [600000]; Current vocabulary size: [854077]; Sequences/sec: 20197.94; Words/sec: 6671748.94;
+21:43:43.396 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [700000]; Current vocabulary size: [955128]; Sequences/sec: 21030.49; Words/sec: 6842389.06;
+21:43:47.896 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [800000]; Current vocabulary size: [1059481]; Sequences/sec: 22217.29; Words/sec: 7268136.19;
+21:43:52.627 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [900000]; Current vocabulary size: [1152618]; Sequences/sec: 21137.18; Words/sec: 6896813.36;
+21:43:57.291 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1000000]; Current vocabulary size: [1240204]; Sequences/sec: 21440.82; Words/sec: 6959884.22;
+21:44:01.654 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1100000]; Current vocabulary size: [1310616]; Sequences/sec: 22925.26; Words/sec: 7238127.69;
+21:44:06.485 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1200000]; Current vocabulary size: [1392063]; Sequences/sec: 20695.36; Words/sec: 6517069.33;
+21:44:11.029 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1300000]; Current vocabulary size: [1481510]; Sequences/sec: 22011.89; Words/sec: 7164726.61;
+21:44:15.857 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1400000]; Current vocabulary size: [1565450]; Sequences/sec: 20708.22; Words/sec: 6670258.65;
+21:44:21.401 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1500000]; Current vocabulary size: [1640916]; Sequences/sec: 18037.52; Words/sec: 5836166.13;
+21:44:25.821 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1600000]; Current vocabulary size: [1715688]; Sequences/sec: 22624.43; Words/sec: 7142732.58;
+21:44:30.324 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1700000]; Current vocabulary size: [1786145]; Sequences/sec: 22207.42; Words/sec: 7153975.35;
+21:44:34.688 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1800000]; Current vocabulary size: [1850261]; Sequences/sec: 22920.01; Words/sec: 7310447.40;
+21:44:39.081 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [1900000]; Current vocabulary size: [1916200]; Sequences/sec: 22758.31; Words/sec: 7281110.83;
+21:44:43.596 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2000000]; Current vocabulary size: [1979427]; Sequences/sec: 22148.39; Words/sec: 7006389.59;
+21:44:48.026 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2100000]; Current vocabulary size: [2034677]; Sequences/sec: 22573.36; Words/sec: 7433018.96;
+21:44:52.531 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2200000]; Current vocabulary size: [2080876]; Sequences/sec: 22197.56; Words/sec: 7255125.19;
+21:44:57.190 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2300000]; Current vocabulary size: [2123967]; Sequences/sec: 21463.83; Words/sec: 7041707.02;
+21:45:01.801 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2400000]; Current vocabulary size: [2167934]; Sequences/sec: 21691.97; Words/sec: 7114224.51;
+21:45:06.309 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2500000]; Current vocabulary size: [2210709]; Sequences/sec: 22177.87; Words/sec: 7082670.44;
+21:45:08.909 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Wating till all processes stop...
+21:45:08.914 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Vocab size before truncation: [2231962],  NumWords: [814776421], sequences parsed: [2558753], counter: [814776421]
+21:45:11.277 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Scavenger: Words before: 2231962; Words after: 1173454;
+21:45:11.277 [main] DEBUG o.d.m.w.wordstore.VocabConstructor - Vocab size after truncation: [1173454],  NumWords: [813717913], sequences parsed: [2558753], counter: [814776421]
+21:45:26.618 [main] INFO  o.d.m.w.wordstore.VocabConstructor - Sequences checked: [2558753], Current vocabulary size: [1173454]; Sequences/sec: [18625.37];
+21:45:26.637 [main] INFO  o.d.m.e.loader.WordVectorSerializer - Projected memory use for model: [2.19 GB]
+21:45:29.692 [main] INFO  o.d.m.e.inmemory.InMemoryLookupTable - Initializing syn1...
+21:45:30.461 [main] INFO  o.d.m.s.SequenceVectors - Building learning algorithms:
+21:45:30.461 [main] INFO  o.d.m.s.SequenceVectors -           building ElementsLearningAlgorithm: [SkipGram]
+21:45:30.465 [main] INFO  o.d.m.s.SequenceVectors - Starting learning process...
