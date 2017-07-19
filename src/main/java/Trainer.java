@@ -4,6 +4,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
+import org.deeplearning4j.models.word2vec.iterator.Word2VecDataSetIterator;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
@@ -61,6 +62,7 @@ public class Trainer {
 
     private void saveModel(String filePath, Word2Vec model){
         WordVectorSerializer.writeWord2VecModel(model, filePath);
+
 
 
     }
