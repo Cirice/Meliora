@@ -1,8 +1,16 @@
 import org.apache.log4j.Logger;
 import org.apache.spark.sql.execution.columnar.INT;
 import org.bytedeco.javacpp.presets.opencv_core;
+import org.deeplearning4j.models.embeddings.WeightLookupTable;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.api.ops.impl.accum.distances.CosineSimilarity;
+import org.nd4j.linalg.api.ops.impl.accum.distances.EuclideanDistance;
+import org.nd4j.linalg.factory.Nd4j;
+import org.nd4j.linalg.ops.transforms.Transforms;
+import org.nd4j.linalg.util.ArrayUtil;
+import javax.xml.crypto.dsig.Transform;
 import java.io.*;
 import java.util.*;
 
@@ -26,7 +34,9 @@ public class Explorer {
             Properties props = new Properties();
             props.load(inputStream);
             this.modelSavePath = props.getProperty("output.model.save.path");
-            this.model = loadModel(this.modelSavePath);
+            File gModel = new File(modelSavePath);
+            this.model = WordVectorSerializer.readWord2VecModel(gModel);
+//            this.model = loadModel(this.modelSavePath);
 
 
             reader.close();
@@ -47,30 +57,7 @@ public class Explorer {
     }
 
 
-    private void explore() throws IOException {
-
-        while (true) {
-            System.out.print("Do you want to play (Y/N) ?\n");
-            Scanner ans = new Scanner(System.in);
-            String answer = ans.nextLine();
-            if (answer.equalsIgnoreCase("Y")) {
-                Scanner input = new Scanner(System.in);
-                System.out.println("Input word: \n");
-                String word = input.nextLine();
-                System.out.println(model.wordsNearest(word, 10));
-                System.out.println(model.getWordVector(word)[0]);
-
-            } else if (answer.equalsIgnoreCase("N")) {
-                System.out.print("Thank you, all done!");
-                break;
-            } else {
-                System.out.print("Try again with (Y/N) only !");
-            }
-
-        }
-    }
-
-    Collection <String> intersectCollections(List<Collection<String>> topicList){
+    private Collection <String> intersectCollections(List<Collection<String>> topicList){
 
         Collection<String> topics = new ArrayList<>();
         Collection<String> all = new ArrayList<>();
@@ -95,10 +82,6 @@ public class Explorer {
         Collection<String> all = new ArrayList<>();
         for (Collection <String> coll:topicList){
             all.addAll(coll);
-//          for(String word:coll){
-//
-//
-//          }
         }
 
 
@@ -115,11 +98,32 @@ public class Explorer {
         return model.wordsNearest(word, n);
     }
 
+
+    private String [] tokenize(String text) throws IOException {
+        Cleaner cleaner = new Cleaner();
+        return cleaner.splitAtSpaces(cleaner.clean(text));
+    }
+
+    private INDArray cosMul(String document, Word2Vec model, int vectorSize) throws IOException {
+
+        String[] tokens = tokenize(document);
+        INDArray baseVector = Nd4j.ones(vectorSize);
+
+        for (String token : tokens) {
+            if (model.hasWord(token)) {
+
+                baseVector = baseVector.addRowVector(Nd4j.create(model.getWordVector(token)));
+
+            }
+        }
+    return baseVector;
+    }
+
+
+
     private void munchText () throws IOException {
 
         Cleaner cleaner = new Cleaner();
-        String cleanText;
-
 
 
         while (true) {
@@ -130,22 +134,32 @@ public class Explorer {
             Collection<String> similarWords = new ArrayList<>();
 
             if (answer.equalsIgnoreCase("Y")) {
-                Scanner input = new Scanner(System.in);
-                System.out.println("Input word: \n");
-                String words = input.nextLine().trim();
+                Scanner input1 = new Scanner(System.in);
+                Scanner input2 = new Scanner(System.in);
 
-                cleanText = cleaner.clean(words);
-                String [] tokens = cleaner.splitAtSpaces(cleanText);
+                System.out.println("Give me the document. \n");
+                String document = input1.nextLine().trim();
+
+                System.out.println("Give me the tags. \n");
+                String tags = input2.nextLine().trim();
+                String [] tagList = cleaner.splitAtSpaces(tags);
+
+                INDArray aggregation = cosMul(document, model, 250);
 
 
-                for (String token:tokens){
-                    similarWords = model.wordsNearest(token, 10);
-                    System.out.println(similarWords);
-                    topicList.add(similarWords);
 
+                //System.out.println(aggregation);
+
+                for (String tag:tagList){
+                    if (model.hasWord(tag)) {
+                        INDArray vector = Nd4j.create(model.getWordVector(tag));
+
+                        double similarity = Transforms.cosineSim(vector, aggregation);
+
+                        System.out.println(tag + ": " + similarity);
+
+                    }
                 }
-
-             unionCollections(topicList);
 
 
             } else if (answer.equalsIgnoreCase("N")) {
