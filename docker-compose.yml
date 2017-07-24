@@ -1,0 +1,9 @@
+version: '2' 
+services:
+   dedupe:
+      build: ./
+      container_name: w2v
+      volumes:
+        - ./conf:/home/meliora_python/conf
+        - ./log:/home/meliora_python/log
+          

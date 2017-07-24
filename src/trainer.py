@@ -5,7 +5,6 @@ import logging
 import numpy as np
 from os import path, listdir
 
-from gensim.models import Word2Vec
 
 try:
     logging.basicConfig(level=logging.DEBUG,
@@ -45,9 +44,6 @@ class LineSentence(object):
 if __name__ == "__main__":
 
     config = read_config(file_path="../conf/default-conf.yml")
-
-    print(config)
-
     source_dir = config['source_dir']
     sentences = LineSentence(source_dir)
     step = (config['params']['alpha'] - config['params']['min_alpha'])/config['params']['iter']
@@ -64,5 +60,3 @@ if __name__ == "__main__":
 
     model.save(config['output_model_path'])
 
-    # model = Word2Vec.load("/media/shagrath/Hoji/gensim-model-v.0.1.0.bin")
-    # print(model.wv['خودرو'])
