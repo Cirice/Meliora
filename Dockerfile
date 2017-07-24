@@ -48,7 +48,7 @@ ENV LC_ALL en_US.UTF-8
 
 WORKDIR $HOME_DIR/meliora_python/src
 
-RUN pip3 install -r requirements
+RUN pip3 install -r ../requirements
 
 CMD ["python3", "main.py"]
 
