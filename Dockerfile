@@ -29,7 +29,6 @@ ADD . $HOME_DIR/word2vec
 
 RUN apt-get -y update && \
     apt-get -y install \
-    python3-pip \
     language-pack-en \
     vim \
     libopenblas-dev
