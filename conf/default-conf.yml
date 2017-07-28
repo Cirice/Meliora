@@ -1,13 +1,13 @@
 
-source_dir: "/media/shagrath/Hoji/text_dir"
-output_model_path: "/media/shagrath/Hoji/gensim-model-v.0.1.0.bin"
+source_dir: "../corpus"
+output_model_path: "../model/gensim-model-v.0.1.0.bin"
 
 params:
-  size: 250
-  workers: 5
-  min_count: 5
-  alpha: 0.015
+  size: 200
+  workers: 48
+  min_count: 2
+  alpha: 0.02
   min_alpha: 0.001
-  iter: 10
+  iter: 15
 
 

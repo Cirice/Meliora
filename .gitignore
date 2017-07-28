@@ -9,6 +9,8 @@
 *.txt
 
 # Bin Files
+*.bin
+*.npy
 
 
 # User-specific stuff:
