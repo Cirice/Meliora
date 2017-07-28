@@ -1,13 +1,13 @@
 
-source_dir: "../corpus"
-output_model_path: "../model/gensim-model-v.0.1.0.bin"
+source_dir: "../corpus" # folder containing the a text file where each line represents a document. 
+output_model_path: "../model/gensim-model-v.0.1.0.bin" # path where the resultant model is to be saved. 
 
 params:
-  size: 200
-  workers: 48
-  min_count: 2
-  alpha: 0.02
-  min_alpha: 0.001
-  iter: 15
+  size: 200 # vector size (preferably a multiple of 4). 
+  workers: 48 # number of CPU cores used during training.
+  min_count: 2 # minimum number of frequency of a word to be used in traning.
+  alpha: 0.02 # maximum learning rate.
+  min_alpha: 0.001 # minimum learning rate.
+  iter: 15 # number of traning rounds with different learning rates.
 
 
