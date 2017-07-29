@@ -8,8 +8,10 @@
  * python branch: please have a look at **conf/default-conf.yml**.
 
 For starting the traning process run the following in shell
-$ sudo docker-compose up -d
 
+`
+$ sudo docker-compose up -d
+`
 ### Notice:
 
 For running the program you should have prepared a text file conntaing the docunments where each line designates  a (clean) document.
