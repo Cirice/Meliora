@@ -4,8 +4,11 @@
  
  After chosing your language of preference (Java or Python) please follow the instructions below: 
  
-* java branch: if you prefer to build the image, you must build the Java project using Apache maven (install maven if necessary) with `mvn clean package` then build the dokcer image with `sudo docker-compose build`. For basic configuration see **conf/word2vec-default.properties** file.
- * python branch: please have a look at **conf/default-conf.yml**.
+* Java branch: 
+ * If you prefer to build the image, you must build the Java project using Apache maven (install maven if necessary) with `mvn clean package` then build the dokcer image with `sudo docker-compose build`. 
+ * For basic configuration see **conf/word2vec-default.properties** file.
+
+* Python branch: please have a look at **conf/default-conf.yml**.
 
 For starting the traning process run the following in shell
 
