@@ -16,6 +16,11 @@ For starting the traning process run the following in shell
 `
 $ sudo docker-compose up -d
 `
+
+### Todo(s):
+ 
+ * Adding more documetation.
+
 ### Notice:
 
 For running the program you should have prepared a text file conntaing the docunments where each line designates  a (clean) document.
