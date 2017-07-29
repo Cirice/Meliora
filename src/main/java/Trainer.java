@@ -1,9 +1,10 @@
 import java.io.*;
 import java.util.Properties;
 import org.apache.log4j.Logger;
+import org.apache.parquet.format.FileMetaData;
+import org.datavec.api.util.ClassPathResource;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
-import org.deeplearning4j.models.word2vec.iterator.Word2VecDataSetIterator;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
@@ -39,8 +40,7 @@ public class Trainer {
             InputStream inputStream = new FileInputStream(configFile);
             Properties props = new Properties();
             props.load(inputStream);
-
-            this.inputCorpusPath = props.getProperty("input.corpus.path");
+            this.inputCorpusPath = new File(props.getProperty("input.corpus.path").trim()).getAbsolutePath();
             this.modelSavePath = props.getProperty("output.model.save.path");
             this.minWordFrequency = Integer.parseInt(props.getProperty("min.word.frequency").trim());
             this.iterations = Integer.parseInt(props.getProperty("number.of.iterations").trim());
