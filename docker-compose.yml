@@ -1,7 +1,8 @@
 version: '2'
 services:
   word2vec_trainer:
-    image: registry.gitlab.com/hosseinabedi/meliora:development 
+    #image: registry.gitlab.com/hosseinabedi/meliora:development 
+    build: .
     container_name: word2wec
     volumes:
       - ./conf:/home/word2vec/conf
